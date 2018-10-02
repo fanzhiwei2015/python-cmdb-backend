@@ -16,6 +16,7 @@ class Product(models.Model):
 
 
 
+
     # class Meta:
     #     ordering = ('created',)
 
@@ -26,6 +27,8 @@ class Application(models.Model):
     is_production = models.BooleanField(default=False)
     owner = models.CharField(max_length=50, blank=False, null=False)
     product = models.ForeignKey(Product, to_field='name', on_delete='PROTECT', default='')
+
+
 
 
 class Host(models.Model):
