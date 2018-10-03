@@ -9,8 +9,8 @@ APIs:
 * 
     
 #authentiction
-* token authentication for each user by djang-rest-auth
-* IsOwnerOrReadOnly -> Done
+* token authentication by djang-rest-auth  /rest-auth/login
+* object level IsOwnerOrReadOnly -> Done 
 
 #notowner readonly 
 
