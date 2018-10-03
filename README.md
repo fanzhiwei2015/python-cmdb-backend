@@ -1,15 +1,16 @@
 # python-cmdb-backend
 
-#to do
+#features
 APIs:
-Get the product list by BU
-Get the application list by BU
-Get the application list by product
-Get the host list by BU
-Get the host list by product
-
-
-#token authentication for each user
+* Get the product list by BU -> done
+* Get the application list by product   -> done
+* Get the host list by application  -> done
+* pagination -> done
+* 
+    
+#authentiction
+* token authentication for each user by djang-rest-auth
+* IsOwnerOrReadOnly -> Done
 
 #notowner readonly 
 

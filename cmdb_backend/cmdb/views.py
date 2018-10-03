@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User, Group
 from cmdb.models import Application, Bu, Product, Host
-from rest_framework import viewsets, filters
+from rest_framework import viewsets
 from cmdb.serializers import UserSerializer, GroupSerializer, ApplicationSerializer, BuSerializer, ProductSerializer, HostSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from .permissions import IsOwnerOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -20,12 +22,17 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+
 class BuViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Applications to be viewed or edited.
     """
     queryset = Bu.objects.all()
     serializer_class = BuSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('name',)
+    permission_classes = (IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly)
+
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
@@ -35,6 +42,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ('name', 'bu')
+    permission_classes = (IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly)
+
 
 class ApplicationViewSet(viewsets.ModelViewSet):
     """
@@ -44,6 +53,8 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     serializer_class = ApplicationSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ('name', 'product')
+    permission_classes = (IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly)
+
 
 class HostViewSet(viewsets.ModelViewSet):
     """
@@ -54,6 +65,13 @@ class HostViewSet(viewsets.ModelViewSet):
 
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ('name', 'ip', 'application')
+    permission_classes = (IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly)
+
+
+
+
+
+
 
 
 
