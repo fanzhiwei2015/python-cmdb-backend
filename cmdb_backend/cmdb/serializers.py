@@ -37,10 +37,6 @@ class ApplicationSerializer(serializers.ModelSerializer):
         ordering = ['id']
 
 
-
-
-
-
 class HostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Host

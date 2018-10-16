@@ -2,5 +2,8 @@ django
 djangorestframework
 #django-rest-auth
 django-filter
+django-request-logging
 pygments
 markdown
+fabric3
+
